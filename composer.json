@@ -1,5 +1,5 @@
 {
-    "name": "anam/phantommagick",
+    "name": "tdavis/phantommagick",
     "description": "PhantomMagick provides a simple API to ease the process of converting HTML to PDF or images",
     "keywords": [
         "Pdf",
