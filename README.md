@@ -154,26 +154,7 @@ PhantomMagick currently supports:
 - Amazon S3
 - Dropbox
 - Rackspace
-
-##### Amazon S3
-
-```php
-use Anam\PhantomMagick\Converter;
-use Aws\S3\S3Client;
-
-$client = S3Client::factory(array(
-    'key'    => 'AWS_KEY',
-    'secret' => 'AWS_SECRET',
-    'region' => 'ap-southeast-2'
-));
-
-$conv = new Converter();
-$conv->adapter($client, 'bucket-name')
-    ->acl('public')
-    ->source('http://google.com')
-    ->toPdf()
-    ->save('google.pdf');
-```
+ 
 
 ##### Dropbox
 First install the required Dropbox dependencies through Composer.

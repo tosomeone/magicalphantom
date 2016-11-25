@@ -66,12 +66,7 @@ class Adapter
      */
     public function pick()
     {
-        // Amazon S3
-        if ($this->client instanceof \Aws\S3\S3Client) {
-            $this->setDriver('s3');
 
-            return $this->s3();
-        }
 
         // Dropbox
         if ($this->client instanceof \Dropbox\Client) {
@@ -88,39 +83,7 @@ class Adapter
         }
     }
 
-    /**
-     * Create a new AwsS3Adapter instance.
-     *
-     * @return mixed
-     */
-    public function s3()
-    {
-        $options = [
-            // Amazon S3 api version
-            'version'   => 2,
-            'prefix'    => null
-        ];
 
-        if (! isset($this->args[0])) {
-            throw new InvalidArgumentException('S3 Bucket name is required');
-        }
-
-        if (isset($this->args[1])) {
-            if (! is_array($this->args[1])) {
-                throw new InvalidArgumentException('Options must be an array');
-            }
-
-            $options = array_merge($options, $this->args[1]);
-        }
-
-        $bucket = $this->args[0];
-
-        if ($options['version'] >= 3 || $options['version'] == 'latest') {
-            return new \League\Flysystem\AwsS3v3\AwsS3Adapter($this->client, $bucket, $options['prefix']);
-        }
-
-        return new \League\Flysystem\AwsS3v2\AwsS3Adapter($this->client, $bucket, $options['prefix']);
-    }
 
     /**
      * Create a new DropboxAdapter instance.

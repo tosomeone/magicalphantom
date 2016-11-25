@@ -8,7 +8,6 @@ use Anam\PhantomMagick\Converter;
 use League\Flysystem\Filesystem;
 use Anam\PhantomMagick\Adapter;
 use Anam\PhantomMagick\Exception\FileFormatNotSupportedException;
-use Aws\S3\S3Client;
 
 class ConverterTest extends \PHPUnit_Framework_TestCase
 {
@@ -73,17 +72,7 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('local', $this->converter->getDriver());
     }
 
-    public function testFileSystemDriverIsS3WhenS3ClientIsUsedAsClient()
-    {
-        $client = S3Client::factory(array(
-            'key'    => 'dummy-key-123',
-            'secret' => 'dummy-secret-123'
-        ));
 
-        $this->converter->adapter($client, 'dummy-bucket');
-
-        $this->assertEquals('s3', $this->converter->getDriver());
-    }
 
     public function testGetTempFilePath()
     {
