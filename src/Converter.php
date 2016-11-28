@@ -137,10 +137,14 @@ class Converter extends Runner
      *
      * @param string  $source  source of the data file
      */
-    public function __construct($source = null)
+    public function __construct($source = null, $mobile==false)
     {
-        $this->initialize();
+      if ($mobile==true){
 
+      }
+      else {
+        $this->initialize_mobile();
+      }
         if ($source) {
             $this->setSource($source);
         }
@@ -156,6 +160,16 @@ class Converter extends Runner
     private function initialize()
     {
         self::$scripts['converter'] = dirname(__FILE__) . '/scripts/phantom_magick.js';
+    }
+
+    /**
+     * Initialize the converter settings
+     *
+     * @return void
+     */
+    private function initialize_mobile()
+    {
+        self::$scripts['converter'] = dirname(__FILE__) . '/scripts/phantom_magick_mobile.js';
     }
 
     /**
