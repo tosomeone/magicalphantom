@@ -140,10 +140,10 @@ class Converter extends Runner
     public function __construct($source = null, $mobile==false)
     {
       if ($mobile==true){
-
+        $this->initialize_mobile();
       }
       else {
-        $this->initialize_mobile();
+        $this->initialize();
       }
         if ($source) {
             $this->setSource($source);
