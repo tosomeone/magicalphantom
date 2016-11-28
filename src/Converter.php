@@ -137,7 +137,7 @@ class Converter extends Runner
      *
      * @param string  $source  source of the data file
      */
-    public function __construct($source = null, $mobile==false)
+    public function __construct($source = null, $mobile=false)
     {
       if ($mobile==true){
         $this->initialize_mobile();
